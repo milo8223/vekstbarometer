@@ -1,22 +1,13 @@
-import Layout from "./components/Layout/Layout";
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/landing/landing";
 
 function App() {
-  const [emotion, setEmotion] = useState("happy");
-
-  useEffect(() => {
-    console.log(`It's ${emotion} right now`);
-  }, [emotion]);
-
   return (
-    <div>
-      <Layout>
-        <p>Test</p>
-      </Layout>
-      <h1>
-        Current emo is {emotion};
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
