@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-const ButtonStyles = styled.button` 
+const StyledBox = styled.div` 
     font-family: "Poppins", sans-serif;
-    border: none;
-    border-radius: 0;
-    padding-inline: 1.75rem;
-    padding-block: .75rem;
-    background-color: springGreen;
-    color: white;
+    background-color: white;
+    border-radius: 36px;
+    padding: 10px;
+    box-shadow: 0px 10px 80px #5A61690D;
 `;
 
-export default ButtonStyles;
+export default StyledBox;

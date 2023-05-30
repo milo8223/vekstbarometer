@@ -1,11 +1,16 @@
+import AlignmentWrap from "../../components/Layout/alignmentWrap";
 import RegionBox from "../../components/landing/regionBox/RegionBox";
-import Aux from "../../hoc/ax";
+import { RegionData } from "./dataLanding";
 
 function Landing() {
   return (
-    <Aux>
-        <RegionBox/>
-    </Aux>
+    <div>
+      <AlignmentWrap>
+        {RegionData.map((region) => (
+          <RegionBox region={region} key={region.id} />
+        ))}
+      </AlignmentWrap>
+    </div>
   );
 }
 

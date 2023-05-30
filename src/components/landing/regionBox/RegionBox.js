@@ -1,13 +1,15 @@
 import React from "react";
 import Aux from "../../../hoc/ax";
 import Image from "../../Layout/image";
-  
-const RegionBox = ({imageDetail, textDetail}) => {
+import StyledBox from "./styledBox";
+
+const RegionBox = (region) => {
     return (
         <Aux>
-            <styledBox>
-                <Image path={imageDetail} text={textDetail} />
-            </styledBox>
+            <StyledBox>
+                <Image path={region.region.image.imageDetail} text={region.region.image.textDetail} rounded />
+                <Image path={region.region.textImage.imageDetail} text={region.region.textImage.textDetail} withText />
+            </StyledBox>
         </Aux>
     )
 }
