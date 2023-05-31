@@ -1,21 +1,28 @@
 import styled from "styled-components";
 
 const ImageStyle = styled.div` 
+  width: ${props => props.width ? props.width : "100%"};
+  height: ${props => props.height ? props.height : "100%"};
+  padding: ${props => props.padding ? props.padding : "0"};
+  max-width: ${props => props.withText ? "90%" : "100%"};
+  overflow: hidden;
+  
+  img {
     width: 100%;
     height: 100%;
-    max-width: 500px;
-    overflow: hidden;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: ${props => props.rounded ? "24px" : "0"};
-      object-fit: cover;
-    }
+    border-radius: ${props => props.rounded ? "20px" : "0"};
+    object-fit: cover;
+  }
 `;
 
 const Image = (props) => (
-  <ImageStyle rounded={props.rounded ? true : false} >
+  <ImageStyle
+    withText={props.withText ? true : false}
+    rounded={props.rounded ? true : false}
+    width={props.width}
+    height={props.height}
+    padding={props.padding}
+  >
     <img src={props.path} alt={props.text} />
   </ImageStyle>
 );
