@@ -10,7 +10,7 @@ const ImageStyle = styled.div`
   img {
     width: 100%;
     height: 100%;
-    border-radius: ${props => props.rounded ? "20px" : "0"};
+    border-radius: ${props => props.rounded ? props.rounded : "0"};
     object-fit: cover;
   }
 `;
@@ -18,7 +18,7 @@ const ImageStyle = styled.div`
 const Image = (props) => (
   <ImageStyle
     withText={props.withText ? true : false}
-    rounded={props.rounded ? true : false}
+    rounded={props.rounded}
     width={props.width}
     height={props.height}
     padding={props.padding}
