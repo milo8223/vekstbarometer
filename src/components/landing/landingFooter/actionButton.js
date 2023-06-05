@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 const ButtonStyle = styled.div`
   background-color: ${props => props.theme.primaryColor};
@@ -27,14 +28,18 @@ const Button = styled.button`
   font-family: ${props => props.theme.primaryFontFamily};
   color: white;
   font-weight: 500;
-  font-size: 1em;
+  font-size: 16px;
   text-decoration: none;
-  padding: 6px 20px;
+  padding: 7px 24px;
   border-radius: 100px;
   background-color: #464255;
   display: block;
   margin-top: 20px;
   width: fit-content;
+
+  span {
+    padding-left: 2px;
+  }
 `;
 
 const ActionButton = (props) => (
@@ -42,7 +47,7 @@ const ActionButton = (props) => (
     <div className="text-info">
       Explore Universitet <span>i Sorost-Norge</span>
     </div>
-    <Button as="a" href="#">Explore Now</Button>
+    <Button as="a" href="#">Explore Now <span><ArrowRightOutlined /></span></Button>
   </ButtonStyle>
 );
 

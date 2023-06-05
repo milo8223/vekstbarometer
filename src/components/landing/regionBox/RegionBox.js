@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Aux from "../../../hoc/ax";
 import Image from "../../Layout/image";
 import StyledBox from "./styledBox";
 
+import { Modal } from 'antd';
+
 const RegionBox = (region) => {
+	const [open, setOpen] = useState(false);
+
 	return (
 		<Aux>
-			<StyledBox>
+			<StyledBox onClick={() => setOpen(true)}>
 				<Image
 					path={region.region.image.imageDetail}
 					text={region.region.image.textDetail}
@@ -19,6 +23,17 @@ const RegionBox = (region) => {
 					withText
 					padding="0 10px" />
 			</StyledBox>
+			<Modal
+				title="Modal 1000px width"
+				centered
+				open={open}
+				onOk={() => setOpen(false)}
+				onCancel={() => setOpen(false)}
+			>
+				<p>some contents...</p>
+				<p>some contents...</p>
+				<p>some contents...</p>
+			</Modal>
 		</Aux>
 	)
 }
