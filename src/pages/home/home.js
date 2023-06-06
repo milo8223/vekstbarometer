@@ -1,6 +1,7 @@
 import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
+import Image from '../../components/Layout/image';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -30,17 +31,31 @@ const Home = () => {
     <Layout
       style={{
         minHeight: '100vh',
+        background: "#fff"
       }}
     >
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+        style={{
+          background: "#fff"
+        }}
+      >
+        <div className="demo-logo-vertical">
+          <Image
+            path={require('../../assets/logo.png')}
+            text="USN logo"
+            width="275px"
+          />
+        </div>
+        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
       <Layout>
         <Header
           style={{
             padding: 0,
-            background: colorBgContainer,
+            background: "#fff",
           }}
         />
         <Content
@@ -60,7 +75,7 @@ const Home = () => {
             style={{
               padding: 24,
               minHeight: 360,
-              background: colorBgContainer,
+              background: "#fff",
             }}
           >
             Bill is a cat.
