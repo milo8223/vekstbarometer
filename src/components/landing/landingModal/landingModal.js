@@ -1,29 +1,58 @@
 import styled from "styled-components";
 
-const ModalStyle = styled.div` 
-  width: ${props => props.width ? props.width : "100%"};
-  height: ${props => props.height ? props.height : "100%"};
-  padding: ${props => props.padding ? props.padding : "0"};
-  max-width: ${props => props.withText ? "90%" : "100%"};
-  overflow: hidden;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: ${props => props.rounded ? props.rounded : "0"};
-    object-fit: cover;
+import { UserOutlined } from '@ant-design/icons';
+import ButtonTypes from "./buttonTypes";
+
+const ModalStyle = styled.div`
+  padding: 60px 0;
+  .head-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    .anticon {
+      font-size: 28px;
+      svg {
+        fill: ${props => props.theme.secondoryColor};
+      }
+    }
+    .text-info {
+      font-family: ${props => props.theme.primaryFontFamily};
+      font-size: 22px;
+      font-weight: 700;
+      color: #0A0A0A;
+      padding-top: 10px;
+    }
+  }
+
+  .body-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 `;
 
+const Usertypes = [
+  "Politician",
+  "Beaurocrats",
+  "Business",
+  "Normal user"
+]
+
 const LandingModal = (props) => (
-  <ModalStyle
-    withText={props.withText ? true : false}
-    rounded={props.rounded}
-    width={props.width}
-    height={props.height}
-    padding={props.padding}
-  >
-    <img src={props.path} alt={props.text} />
+  <ModalStyle>
+    <div className="head-wrap">
+      <UserOutlined />
+      <div className="text-info">
+        Select Type of User
+      </div>
+    </div>
+    <div className="body-wrap">
+      {Usertypes.map((title, index) => (
+        <ButtonTypes title={title} key={index} />
+      ))}
+    </div>
   </ModalStyle>
 );
 

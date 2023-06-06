@@ -7,6 +7,7 @@ const StyledBox = styled.div`
   padding: 16px;
   margin: 0 16px;
   max-width: 460px;
+  cursor: pointer;
   box-shadow: 0px 10px 80px #5A61690D;
 `;
 

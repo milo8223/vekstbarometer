@@ -4,6 +4,7 @@ import Image from "../../Layout/image";
 import StyledBox from "./styledBox";
 
 import { Modal } from 'antd';
+import LandingModal from "../landingModal/landingModal";
 
 const RegionBox = (region) => {
 	const [open, setOpen] = useState(false);
@@ -24,15 +25,13 @@ const RegionBox = (region) => {
 					padding="0 10px" />
 			</StyledBox>
 			<Modal
-				title="Modal 1000px width"
 				centered
 				open={open}
 				onOk={() => setOpen(false)}
 				onCancel={() => setOpen(false)}
+				footer={null}
 			>
-				<p>some contents...</p>
-				<p>some contents...</p>
-				<p>some contents...</p>
+				<LandingModal />
 			</Modal>
 		</Aux>
 	)
