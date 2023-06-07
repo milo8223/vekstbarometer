@@ -1,10 +1,10 @@
-import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, theme } from 'antd';
 import { useState } from 'react';
 import SidebarLogos from '../../components/home/sidebarLogos';
 import HeaderContent from '../../components/home/headerContent/headerContent';
 import BodyContent from '../../components/home/bodyContent/bodyContent';
 import styled from "styled-components";
+import MenuContent from '../../components/home/menuContent/menuContent';
 
 const { Header, Content, Sider } = Layout;
 
@@ -21,27 +21,6 @@ const LayoutWrapper = styled.div`
     }
   }
 `;
-
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-
-const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-];
 
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -62,12 +41,13 @@ const Home = () => {
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
           style={{
-            background: "#FFF",
-            borderRadius: "30px"
+            background: "#f5f5f5",
+            borderRadius: "30px",
+            boxShadow: "0px 0px 20px rgba(143 ,147 ,151, 0.3)"
           }}
         >
           <SidebarLogos />
-          <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
+          <MenuContent />
         </Sider>
         <Layout>
           <Header
