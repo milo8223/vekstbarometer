@@ -1,8 +1,27 @@
 import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
-import Image from '../../components/Layout/image';
-const { Header, Content, Footer, Sider } = Layout;
+import SidebarLogos from '../../components/home/sidebarLogos';
+import HeaderContent from '../../components/home/headerContent/headerContent';
+import BodyContent from '../../components/home/bodyContent/bodyContent';
+import styled from "styled-components";
+
+const { Header, Content, Sider } = Layout;
+
+const LayoutWrapper = styled.div`
+  .ant-layout-has-sider {
+    .ant-layout-sider {
+      width: 250px !important;
+      flex: 0 0 250px !important;
+      max-width: 250px !important;
+      min-width: 250px !important;
+      .ant-layout-sider-trigger {
+        display: none;
+      }
+    }
+  }
+`;
+
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -11,6 +30,7 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
+
 const items = [
   getItem('Option 1', '1', <PieChartOutlined />),
   getItem('Option 2', '2', <DesktopOutlined />),
@@ -22,74 +42,54 @@ const items = [
   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem('Files', '9', <FileOutlined />),
 ];
+
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-        background: "#fff"
-      }}
-    >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+    <LayoutWrapper>
+      <Layout
         style={{
-          background: "#fff"
+          minHeight: '100vh',
+          background: "#F3F2F7",
+          padding: "20px"
         }}
       >
-        <div className="demo-logo-vertical">
-          <Image
-            path={require('../../assets/logo.png')}
-            text="USN logo"
-            width="275px"
-          />
-        </div>
-        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-      <Layout>
-        <Header
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
           style={{
-            padding: 0,
-            background: "#fff",
-          }}
-        />
-        <Content
-          style={{
-            margin: '0 16px',
+            background: "#FFF",
+            borderRadius: "30px"
           }}
         >
-          <Breadcrumb
+          <SidebarLogos />
+          <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        </Sider>
+        <Layout>
+          <Header
             style={{
-              margin: '16px 0',
+              padding: 0,
+              background: "#F3F2F7",
+              margin: "0 16px 0 16px",
+              height: "initial"
             }}
           >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
+            <HeaderContent />
+          </Header>
+          <Content
             style={{
-              padding: 24,
-              minHeight: 360,
-              background: "#fff",
+              margin: '0 16px',
             }}
           >
-            Bill is a cat.
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
+            <BodyContent />
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </LayoutWrapper>
   );
 };
 export default Home;

@@ -8,8 +8,8 @@ const ImageStyle = styled.div`
   overflow: hidden;
   
   img {
-    width: 100%;
-    height: 100%;
+    width: ${props => props.withImg ? props.width : "100%"};
+    height: ${props => props.withImg ? props.height : "100%"};
     border-radius: ${props => props.rounded ? props.rounded : "0"};
     object-fit: cover;
   }
@@ -18,6 +18,7 @@ const ImageStyle = styled.div`
 const Image = (props) => (
   <ImageStyle
     withText={props.withText ? true : false}
+    withImg={props.withImg ? true : false}
     rounded={props.rounded}
     width={props.width}
     height={props.height}

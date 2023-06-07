@@ -22,7 +22,7 @@ const ButtonStyle = styled.div`
       display: block;
     }
   }
-  `;
+`;
 
 const Button = styled.button`
   font-family: ${props => props.theme.primaryFontFamily};
